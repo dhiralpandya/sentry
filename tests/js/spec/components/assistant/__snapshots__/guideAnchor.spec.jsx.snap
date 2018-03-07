@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`GuideAnchor renders 1`] = `
-<div
+<span
   className="guide-anchor text"
   style={
     Object {
@@ -14,11 +14,11 @@ exports[`GuideAnchor renders 1`] = `
     className="guide-anchor-ping target 1"
     type="text"
   />
-</div>
+</span>
 `;
 
 exports[`GuideAnchor turns active when guide state changes 1`] = `
-<div
+<span
   className="guide-anchor text"
   style={
     Object {
@@ -31,5 +31,5 @@ exports[`GuideAnchor turns active when guide state changes 1`] = `
     className="guide-anchor-ping target 1"
     type="text"
   />
-</div>
+</span>
 `;

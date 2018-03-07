@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import React from 'react';
 import styled from 'react-emotion';
-import $ from 'jquery';
 import createReactClass from 'create-react-class';
 import Reflux from 'reflux';
 import {registerAnchor, unregisterAnchor} from '../../actionCreators/guides';
@@ -32,12 +31,9 @@ const GuideAnchor = createReactClass({
 
   componentDidUpdate(prevProps, prevState) {
     if (!prevState.active && this.state.active) {
-      $('html, body').animate(
-        {
-          scrollTop: $(this.anchorElement).offset().top,
-        },
-        1000
-      );
+      this.anchorElement.scrollIntoView({
+        behavior: 'smooth',
+      });
     }
   },
 
@@ -61,10 +57,10 @@ const GuideAnchor = createReactClass({
     let {target, type} = this.props;
 
     return (
-      <div
+      <span
         ref={el => (this.anchorElement = el)}
-        className={classNames('guide-anchor', type)}
         style={{position: 'relative'}}
+        className={classNames('guide-anchor', type)}
       >
         {this.props.children}
         <StyledGuideAnchor
@@ -72,7 +68,7 @@ const GuideAnchor = createReactClass({
           className={classNames('guide-anchor-ping', target)}
           active={this.state.active}
         />
-      </div>
+      </span>
     );
   },
 });
