@@ -20,7 +20,7 @@ describe('GuideDrawer', function() {
     let wrapper = shallow(<GuideDrawer guide={data} step={1} onClose={mock} />);
     expect(wrapper).toMatchSnapshot();
     wrapper
-      .find('Button')
+      .find('.close-button')
       .last()
       .simulate('click');
     expect(mock).toHaveBeenCalled();

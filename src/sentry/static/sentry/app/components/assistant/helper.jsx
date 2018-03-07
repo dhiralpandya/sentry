@@ -77,7 +77,7 @@ const AssistantHelper = createReactClass({
     return (
       <div>
         {showDrawer ? (
-          <AssistantDrawer>
+          <div>
             {this.state.currentGuide ? (
               <GuideDrawer
                 guide={this.state.currentGuide}
@@ -87,7 +87,7 @@ const AssistantHelper = createReactClass({
             ) : (
               <SupportSearch onClose={this.handleSupportDrawerClose} />
             )}
-          </AssistantDrawer>
+          </div>
         ) : (
           <StyledAssistantContainer
             onClick={this.handleDrawerOpen}
@@ -102,8 +102,6 @@ const AssistantHelper = createReactClass({
     );
   },
 });
-
-const AssistantDrawer = styled('div')``;
 
 const StyledCueText = styled('span')`
   width: 0;

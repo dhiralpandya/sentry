@@ -1,69 +1,94 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`GuideDrawer gets dismissed 1`] = `
-<div>
-  <div
-    className="assistant-drawer-title"
-  >
-    1. Title 1
-  </div>
-  <div
-    className="assistant-drawer-message"
-  >
-    Message 1
-  </div>
-  <div>
+<StyledAssistantContainer>
+  <StyledAssistantInputRow>
+    <QuestionMarkIcon
+      hasGuide={true}
+    />
+    <StyledTitle>
+      1. Title 1
+    </StyledTitle>
+    <div
+      className="close-button"
+      onClick={[Function]}
+    >
+      <StyledCloseIcon
+        src="icon-close-lg"
+      />
+    </div>
+  </StyledAssistantInputRow>
+  <StyledContent>
     <div>
+      Message 1
+    </div>
+    <StyledActions>
       <Button
         disabled={false}
         onClick={[Function]}
+        priority="success"
+        size="small"
       >
         Next
          →
       </Button>
-      <Button
-        disabled={false}
-        onClick={[Function]}
-      >
-        Dismiss
-      </Button>
-    </div>
-  </div>
-</div>
+    </StyledActions>
+  </StyledContent>
+</StyledAssistantContainer>
 `;
 
 exports[`GuideDrawer renders next step 1`] = `
-<div>
-  <div
-    className="assistant-drawer-title"
-  >
-    2. Title 2
-  </div>
-  <div
-    className="assistant-drawer-message"
-  >
-    Message 2
-  </div>
-  <div>
-    <div>
-      <p>
-        Did you find this guide useful?
-      </p>
-      <Button
-        disabled={false}
-        onClick={[Function]}
-      >
-        Yes
-           ✔
-      </Button>
-      <Button
-        disabled={false}
-        onClick={[Function]}
-      >
-        No
-           ✖
-      </Button>
+<StyledAssistantContainer>
+  <StyledAssistantInputRow>
+    <QuestionMarkIcon
+      hasGuide={true}
+    />
+    <StyledTitle>
+      2. Title 2
+    </StyledTitle>
+    <div
+      className="close-button"
+      onClick={[Function]}
+    >
+      <StyledCloseIcon
+        src="icon-close-lg"
+      />
     </div>
-  </div>
-</div>
+  </StyledAssistantInputRow>
+  <StyledContent>
+    <div>
+      Message 2
+    </div>
+    <StyledActions>
+      <div>
+        <p>
+          Did you find this guide useful?
+        </p>
+        <Button
+          disabled={false}
+          onClick={[Function]}
+          priority="success"
+          size="small"
+        >
+          Yes
+             ✔
+        </Button>
+        <Button
+          disabled={false}
+          onClick={[Function]}
+          priority="success"
+          size="small"
+          style={
+            Object {
+              "marginLeft": "0.25em",
+            }
+          }
+        >
+          No
+             ✖
+        </Button>
+      </div>
+    </StyledActions>
+  </StyledContent>
+</StyledAssistantContainer>
 `;
