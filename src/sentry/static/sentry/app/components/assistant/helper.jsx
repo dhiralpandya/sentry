@@ -1,11 +1,14 @@
 import React from 'react';
 import Reflux from 'reflux';
 import createReactClass from 'create-react-class';
+import styled from 'react-emotion';
 import {t} from '../../locale';
 import {closeGuide, fetchGuides, nextStep} from '../../actionCreators/guides';
-import SupportDrawer from './supportDrawer';
+import SupportSearch from './supportSearch';
 import GuideDrawer from './guideDrawer';
 import GuideStore from '../../stores/guideStore';
+import QuestionMarkIcon from './questionMarkIcon';
+import AssistantContainer from './assistantContainer';
 
 // AssistantHelper is responsible for rendering the cue message, guide drawer and support drawer.
 const AssistantHelper = createReactClass({
@@ -72,9 +75,9 @@ const AssistantHelper = createReactClass({
     }
 
     return (
-      <div className="assistant-container">
+      <div>
         {showDrawer ? (
-          <div className="assistant-drawer">
+          <AssistantDrawer>
             {this.state.currentGuide ? (
               <GuideDrawer
                 guide={this.state.currentGuide}
@@ -82,17 +85,43 @@ const AssistantHelper = createReactClass({
                 onClose={closeGuide}
               />
             ) : (
-              <SupportDrawer onClose={this.handleSupportDrawerClose} />
+              <SupportSearch onClose={this.handleSupportDrawerClose} />
             )}
-          </div>
+          </AssistantDrawer>
         ) : (
-          <a onClick={this.handleDrawerOpen} className="assistant-cue">
-            {cueText}
-          </a>
+          <StyledAssistantContainer
+            onClick={this.handleDrawerOpen}
+            className="assistant-cue"
+          >
+            <QuestionMarkIcon />
+            <StyledCueText>{cueText}</StyledCueText>
+          </StyledAssistantContainer>
         )}
       </div>
     );
   },
 });
+
+const AssistantDrawer = styled('div')``;
+
+const StyledCueText = styled('span')`
+  width: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: 0.2s all;
+  white-space: nowrap;
+`;
+
+const StyledAssistantContainer = styled(AssistantContainer)`
+  &:hover {
+    cursor: pointer;
+
+    ${StyledCueText} {
+      width: 5.5em;
+      opacity: 1;
+      margin: 0 0.5em;
+    }
+  }
+`;
 
 export default AssistantHelper;

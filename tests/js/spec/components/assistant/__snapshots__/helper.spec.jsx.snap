@@ -1,25 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Helper renders cue 1`] = `
-<div
-  className="assistant-container"
->
-  <a
+<div>
+  <StyledAssistantContainer
     className="assistant-cue"
     onClick={[Function]}
   >
-    Need Help?
-  </a>
+    <QuestionMarkIcon />
+    <StyledCueText>
+      Need Help?
+    </StyledCueText>
+  </StyledAssistantContainer>
 </div>
 `;
 
 exports[`Helper renders guide drawer 1`] = `
-<div
-  className="assistant-container"
->
-  <div
-    className="assistant-drawer"
-  >
+<div>
+  <AssistantDrawer>
     <GuideDrawer
       guide={
         Object {
@@ -46,20 +43,16 @@ exports[`Helper renders guide drawer 1`] = `
       onClose={[Function]}
       step={1}
     />
-  </div>
+  </AssistantDrawer>
 </div>
 `;
 
 exports[`Helper renders support drawer 1`] = `
-<div
-  className="assistant-container"
->
-  <div
-    className="assistant-drawer"
-  >
+<div>
+  <AssistantDrawer>
     <SupportDrawer
       onClose={[Function]}
     />
-  </div>
+  </AssistantDrawer>
 </div>
 `;
