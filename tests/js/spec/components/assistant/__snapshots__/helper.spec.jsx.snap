@@ -4,10 +4,15 @@ exports[`Helper renders cue 1`] = `
 <div>
   <StyledAssistantContainer
     className="assistant-cue"
+    hasGuide={null}
     onClick={[Function]}
   >
-    <QuestionMarkIcon />
-    <StyledCueText>
+    <QuestionMarkIcon
+      hasGuide={null}
+    />
+    <StyledCueText
+      hasGuide={null}
+    >
       Need Help?
     </StyledCueText>
   </StyledAssistantContainer>

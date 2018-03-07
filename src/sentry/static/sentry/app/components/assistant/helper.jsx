@@ -7,7 +7,7 @@ import {closeGuide, fetchGuides, nextStep} from '../../actionCreators/guides';
 import SupportSearch from './supportSearch';
 import GuideDrawer from './guideDrawer';
 import GuideStore from '../../stores/guideStore';
-import QuestionMarkIcon from './questionMarkIcon';
+import CueIcon from './cueIcon';
 import AssistantContainer from './assistantContainer';
 
 // AssistantHelper is responsible for rendering the cue message, guide drawer and support drawer.
@@ -92,9 +92,10 @@ const AssistantHelper = createReactClass({
           <StyledAssistantContainer
             onClick={this.handleDrawerOpen}
             className="assistant-cue"
+            hasGuide={this.state.currentGuide}
           >
-            <QuestionMarkIcon />
-            <StyledCueText>{cueText}</StyledCueText>
+            <CueIcon hasGuide={this.state.currentGuide} />
+            <StyledCueText hasGuide={this.state.currentGuide}>{cueText}</StyledCueText>
           </StyledAssistantContainer>
         )}
       </div>
@@ -110,21 +111,39 @@ const StyledCueText = styled('span')`
   opacity: 0;
   transition: 0.2s all;
   white-space: nowrap;
+
+  ${p =>
+    p.hasGuide &&
+    `
+    width: auto;
+    opacity: 1;
+    margin: 0 1em 0 0.5em;
+  `};
 `;
 
 const StyledAssistantContainer = styled(AssistantContainer)`
   display: flex;
   align-items: center;
+  cursor: pointer;
 
-  &:hover {
-    cursor: pointer;
-
-    ${StyledCueText} {
-      width: 5.5em;
-      opacity: 1;
-      margin: 0 0.5em;
+  ${p =>
+    !p.hasGuide &&
+    `
+    &:hover {
+      ${StyledCueText} {
+        width: 5.5em;
+        opacity: 1;
+        margin: 0 0.5em;
+      }
     }
-  }
+  `} ${p =>
+      p.hasGuide
+        ? `
+    background-color: ${p.theme.greenDark};
+    border-color: ${p.theme.greenLight};
+    color: ${p.theme.offWhite};
+  `
+        : ''};
 `;
 
 export default AssistantHelper;
